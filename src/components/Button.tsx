@@ -15,10 +15,10 @@ const variantClasses = {
 
 const defaultStyle = " px-4 py-2 rounded-md "
 
-export const Button = ({text, variant, onClick, fullWidth}: ButtonProp) => {
+export const Button = ({text, variant, onClick, fullWidth, disabled}: ButtonProp) => {
 
     return <button className={variantClasses[variant] + " " + 
-        defaultStyle + `${fullWidth ? " w-full flex justify-center items-center" : ""}` } onClick={onClick} >
+        defaultStyle + `${fullWidth ? " w-full flex justify-center items-center" : ""}` } onClick={onClick} disabled={disabled} >
             {text}
         </button>
     

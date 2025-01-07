@@ -6,7 +6,7 @@ import { Input } from "../components/Input";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../atom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-
+import { BACKEND_URL } from "../config";
 
 export const SignUpPage = () => {
     const usernameRef = useRef<HTMLInputElement>();
@@ -20,6 +20,11 @@ export const SignUpPage = () => {
        const username = usernameRef.current?.value;   
        const email = emailRef.current?.value;
        const password = passwordRef.current?.value;
+
+       console.log(username);
+       console.log(email);
+       console.log(password);
+
         if(!username || !email || !password){
             alert("All fields are required.");
             return;
@@ -27,12 +32,16 @@ export const SignUpPage = () => {
         setIsLoading(true);
 
        try{
-        const BACKEND_URL = process.env.BACKEND_URL;
+        // const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+        // console.log(URL);
+        
         const response = await axios.post(BACKEND_URL + "/api/v1/user/signup", {
             email: email,
             username: username,
             password: password,
         });
+        console.log("Response", response)
+
         setUser({
             email: response.data.email,
             username: response.data.username,
