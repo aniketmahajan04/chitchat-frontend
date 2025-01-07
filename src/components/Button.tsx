@@ -4,6 +4,7 @@ interface ButtonProp {
     variant: "signup" | "signin" | "logout";
     onClick?: () => void;
     fullWidth?: boolean;
+    disabled: boolean;
 }
 
 const variantClasses = {
